@@ -18,7 +18,7 @@
     "mocha": "^8.2.0"
   },
   "scripts": {
-    "test": "mocha --recursive --timeout 150000",
+    "test": "mocha --recursive --timeout 550000",
     "tdd": "nodemon --exec mocha --recursive --reporter min",
     "tdd-cov": "nodemon --exec nyc mocha --recursive",
     "coverage": " nyc mocha --recursive && nyc report --reporter=lcov"

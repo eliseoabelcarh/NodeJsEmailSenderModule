@@ -3,7 +3,8 @@ const sgMail = require('@sendgrid/mail');
 const { crearErrorAlEnviarEmail } = require('../errors/errors')
 const { crearEmailConTextoPlano,
     crearEmailConTextoPlanoYHtml,
-    crearEmailConTextoPlanoYHtmlYAttachmentConFiles
+    crearEmailConTextoPlanoYHtmlYAttachmentConFiles,
+    crearEmailConCamposOpcionales
 } = require('../models/email')
 //require('dotenv').config()
 
@@ -24,6 +25,7 @@ const crearEmailSender = async function (config) {
             try {
                 const emailValido = crearEmailConTextoPlano(email)
                 respuestaExitosa = await enviarEmail(emailValido)
+                //await???Return????
                 return respuestaExitosa
             } catch (error) {
                 throw error
@@ -43,6 +45,16 @@ const crearEmailSender = async function (config) {
         sendEmailConTextoPlanoYHtmlYArchivosAdjuntos: async (email, arrayConPathDeArchivos) => {
             try {
                 const emailValido = crearEmailConTextoPlanoYHtmlYAttachmentConFiles(email, arrayConPathDeArchivos)
+                respuestaExitosa = await enviarEmail(emailValido)
+                return respuestaExitosa
+            } catch (error) {
+                throw error
+            }
+
+        },
+        sendEmail: async (from, to, subject, textOrHtml, arrayConPathDeArchivos) => {
+            try {
+                const emailValido = crearEmailConCamposOpcionales(from, to, subject, textOrHtml, arrayConPathDeArchivos)
                 respuestaExitosa = await enviarEmail(emailValido)
                 return respuestaExitosa
             } catch (error) {

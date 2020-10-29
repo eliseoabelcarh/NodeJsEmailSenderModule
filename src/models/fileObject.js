@@ -36,7 +36,6 @@ function crearFileObject(objeto) {
 
 
 function generateFileObjectFromPath(rutaDeArchivo) {
-
     try {
         let fileObject = {}
 
@@ -56,9 +55,36 @@ function generateFileObjectFromPath(rutaDeArchivo) {
     } catch (error) {
         throw crearErrorArgumentosInvalidos('generando File Object', 'error en ruta de archivo')
     }
-
-
 }
+
+
+
+function generateFileObjectFromFileFormat(file, nameFile) {
+    try {
+        let fileObject = {}
+
+        let pathToAttachment = rutaDeArchivo;
+        attachment = fs.readFileSync(pathToAttachment).toString("base64");
+        fileObject.content = attachment
+
+        const filename = path.basename(rutaDeArchivo)
+        fileObject.filename = filename
+
+        const tipo = mime.getType(rutaDeArchivo);
+        fileObject.type = tipo
+
+        fileObject.disposition = 'attachment'
+
+        return fileObject
+    } catch (error) {
+        throw crearErrorArgumentosInvalidos('generando File Object', 'error en ruta de archivo')
+    }
+}
+
+
+
+
+
 
 
 module.exports = {

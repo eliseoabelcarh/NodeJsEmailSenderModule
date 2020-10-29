@@ -30,17 +30,6 @@ describe('si no se envía Objeto de Configuracion', () => {
     })
 })
 
-describe('si no se envía Objeto de Configuracion', () => {
-    it('devuelve error', async () => {
-        await assert.rejects(async () => {
-            const sender = await crearEmailSender()
-        }, error => {
-            const esperado = 'se necesita objeto config'
-            assert.deepStrictEqual(error.message, esperado)
-            return true
-        })
-    })
-})
 
 
 describe('con ApiKey inválida', () => {
@@ -101,11 +90,9 @@ describe('con ApiKey inválida', () => {
         })
     })
 
-
-
 })
 
-describe('CON API KEY VALIDA', () => {
+xdescribe('CON API KEY VALIDA', () => {
 
     const config = { apiKey: process.env.SENDGRID_API_KEY }
 
@@ -126,9 +113,6 @@ describe('CON API KEY VALIDA', () => {
     describe('envío de email con archivo adjunto', () => {
         it('se recibe mensaje de envío exitoso', async () => {
             const emailValido1 = emailExample.validoTextoPlanoYHtmlYAttachmentVacio
-            //CONSULTAR RUTTTTTTTAAAAAAAAAAAAASSSSSSS!!!!!!!
-            //CONSULTAR RUTTTTTTTAAAAAAAAAAAAASSSSSSS!!!!!!!
-            //CONSULTAR RUTTTTTTTAAAAAAAAAAAAASSSSSSS!!!!!!!
             const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
             const esperado = true
             const sender = await crearEmailSender(config)
@@ -155,4 +139,18 @@ describe('CON API KEY VALIDA', () => {
 
         })
     })
+
+
+    describe('envío de email con campos mínimos y archivo adjunto opcionales', () => {
+        it('se recibe mensaje de envío exitoso', async () => {
+            const example = emailExample.validoTextoPlanoYHtmlYAttachmentVacio
+            const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
+            const esperado = true
+            const sender = await crearEmailSender(config)
+            //have to change timeout in mocha script package.json
+            const respuesta1 = await sender.sendEmail(example.from, example.to, example.subject, example.html, arrayConPathDeArchivos)
+            assert.deepStrictEqual(respuesta1, esperado)
+        })
+    })
+
 })

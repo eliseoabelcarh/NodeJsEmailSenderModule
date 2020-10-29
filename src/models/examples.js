@@ -20,7 +20,7 @@ const validoTextoPlanoYHtmlYAttachmentVacio = {
     from: 'eliseoabelcarh3@gmail.com',
     subject: 'Enviadooo desde Modulo Email Sender',
     text: 'easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    html: '<strong>Bestt anywhere, even with Node.js</strong>',
     attachments: []
 }
 

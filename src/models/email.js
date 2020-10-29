@@ -3,6 +3,34 @@ const { generateFileObjectFromPath } = require('./fileObject')
 
 
 
+
+
+
+function crearObjetoEmail(from, to, subject, textOrHtml) {
+    let email = {}
+    if (!from) {
+        throw crearErrorArgumentosInvalidos('from', 'campo requerido')
+    } else {
+        email.from = from
+    }
+    if (!to) {
+        throw crearErrorArgumentosInvalidos('to', 'campo requerido')
+    } else {
+        email.to = to
+    }
+    if (!subject) {
+        throw crearErrorArgumentosInvalidos('subject', 'campo requerido')
+    } else {
+        email.subject = subject
+    }
+    if (!textOrHtml) {
+        throw crearErrorArgumentosInvalidos('html', 'campo requerido')
+    } else {
+        email.html = textOrHtml
+    }
+    return email
+}
+
 function crearEmailBase(objeto) {
     let email = {}
     if (!objeto.from) {
@@ -89,34 +117,26 @@ function crearEmailConTextoPlanoYHtmlYAttachmentConFiles(objeto, arrayConPathDeA
 }
 
 
+function crearEmailConCamposOpcionales(from, to, subject, textOrHtml, arrayConPathDeArchivos) {
 
+    let email = {}
 
-/* function crearFileObject(objeto) {
-    let file = {}
-    if (!objeto.content) {
-        throw crearErrorArgumentosInvalidos('content', 'campo requerido')
-    } else {
-        file.content = objeto.content
-    }
-    if (!objeto.filename) {
-        throw crearErrorArgumentosInvalidos('filename', 'campo requerido')
-    } else {
-        file.filename = objeto.filename
-    }
+    const base = crearObjetoEmail(from, to, subject, textOrHtml)
 
-    if (!objeto.type) {
-        throw crearErrorArgumentosInvalidos('type', 'campo requerido')
-    } else {
-        file.type = objeto.type
+    if (arrayConPathDeArchivos.length) {
+        email.attachments = []
+        for (let i = 0; i < arrayConPathDeArchivos.length; i++) {
+            const rutaElemento = arrayConPathDeArchivos[i];
+            let fileObject = generateFileObjectFromPath(rutaElemento)
+            email.attachments.push(fileObject)
+        }
     }
-    if (!objeto.disposition) {
-        throw crearErrorArgumentosInvalidos('disposition', 'campo requerido')
-    } else {
-        file.disposition = objeto.disposition
-    }
-    return file
+    email = { ...base, ...email }
+    return email
 }
- */
+
+
+
 
 
 
@@ -125,5 +145,5 @@ module.exports = {
     crearEmailConTextoPlanoYHtml,
     crearEmailConTextoPlanoYHtmlYAttachmentVacio,
     crearEmailConTextoPlanoYHtmlYAttachmentConFiles,
-    //crearFileObject
+    crearEmailConCamposOpcionales
 }
