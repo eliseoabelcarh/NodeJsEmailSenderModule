@@ -30,7 +30,9 @@
 
 ![Screenshot](lesssecureapps.png)
 
-
+        *** podría ser necesario también habilitar permisos en display unlock captcha
+        *** https://accounts.google.com/b/0/displayunlockcaptcha
+        
 ### MODELO DE ENVIO PARA SENDGRID
 ```
          //reemplace variables de entorno creando un archivo .env
