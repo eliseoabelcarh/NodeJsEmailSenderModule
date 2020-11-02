@@ -6,7 +6,7 @@ const { crearEmailSender } = require('../../src/module')
 
 
 describe('---- PARA NODEMAILER', () => {
-    describe.only('envío mail', () => {
+    describe('envío mail', () => {
         it('recibo respuesta exitosa', async () => {
             //reemplace variables de entorno creando un archivo .env
             const config = {
@@ -31,7 +31,7 @@ describe('---- PARA NODEMAILER', () => {
 
 
 
-describe.only('---- PARA SENDGRID', () => {
+describe('---- PARA SENDGRID', () => {
     it('envío de email con campos mínimos y archivo adjunto opcionales', async () => {
         //regístrate en la página de Sendgrid/Twilio para obtener una Apikey
         //reemplace variables de entorno creando un archivo .env
@@ -41,7 +41,7 @@ describe.only('---- PARA SENDGRID', () => {
         }
         const email = {
             from: process.env.SENDGRID_EMAIL, // debe ser el mismo email registrado en sendgrid
-            to: 'eliseoabelcarh3@gmail.com',
+            to: 'eliseoabelcarh2@gmail.com',
             subject: 'Hi!!',
             html: '<strong>Esto es un mensaje</strong>'
         }
