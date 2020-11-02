@@ -6,7 +6,7 @@ const { crearEmailConTextoPlano,
     crearEmailConTextoPlanoYHtmlYAttachmentConFiles,
     crearEmailConCamposOpcionales
 } = require('../models/email')
-//require('dotenv').config()
+
 
 
 const crearEmailSender = async function (config) {
@@ -25,7 +25,6 @@ const crearEmailSender = async function (config) {
             try {
                 const emailValido = crearEmailConTextoPlano(email)
                 respuestaExitosa = await enviarEmail(emailValido)
-                //await???Return????
                 return respuestaExitosa
             } catch (error) {
                 throw error
@@ -76,19 +75,6 @@ async function enviarEmail(email) {
         throw crearErrorAlEnviarEmail('Envío de Email')
     }
 }
-
-/* 
-function handlerErrors(error) {
-    if (error.type === 'INVALID_ARGS') {
-        return error
-    } else if (error.type === 'INTERNAL_ERROR') {
-        return crearErrorAlEnviarEmail('Envío de Email')
-    } else {
-        return new Error('INDEFINIDO: ' + error.message)
-    }
-}
- */
-
 
 
 
