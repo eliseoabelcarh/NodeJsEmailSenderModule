@@ -14,11 +14,12 @@
             }
             const emailSender = await crearEmailSender(config)
             const mail = {
-                from: config.user,
+                from: config.user, // opción 2: from: emailSender.getEmailSender
                 to: 'alguien@gmail.com',
                 subject: 'Send from My Module!!',
                 text: 'hello Moto!',
                 attachmentsPaths: ['./test/assets/ejemplo.pdf']
+                //Si no enviarás adjuntos, debes enviar array vacío
             }
             const recibido = await emailSender.sendEmail(mail)
            console.log('enviado:' + recibido)
@@ -43,8 +44,8 @@
             service: 'sendgrid' 
         }
         const email = {
-            from: 'eliseoabelcarh3@gmail.com', // debe ser el mismo email registrado en sendgrid
-            to: 'eliseoabelcarh1@gmail.com',
+            from: process.env.SENDGRID_EMAIL, // debe ser el mismo email registrado en sendgrid
+            to: 'someone@gmail.com',
             subject: 'Hi!!',
             html: '<strong>Esto es un mensaje</strong>'
         }

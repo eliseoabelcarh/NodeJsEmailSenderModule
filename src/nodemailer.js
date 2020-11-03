@@ -14,6 +14,7 @@ const crearEmailSenderNodemailer = async (config) => {
     })
 
     return {
+        getEmailSender: config.user,
         sendEmail: async function ({ from = config.user, to, subject, text, attachmentsPaths }) {
             const email = crearEmail({ from, to, subject, text, attachmentsPaths })
             await send(transporter, email)
