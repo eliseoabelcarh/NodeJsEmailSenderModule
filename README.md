@@ -26,7 +26,7 @@
   ```         
 #### IMPORTANTE:
            *** Para poder enviar emails debe configurar manualmente su cuenta de Gmail
-           *** ingresando a su cuenta Gmail y descativando la opción "Less Secure Apps"
+           *** ingresando a su cuenta Gmail y ACTIVANDO la opción "Less Secure Apps"
            *** vaya a -> Google Account -> Security -> Less Secure Apps 
 
 ![Screenshot](lesssecureapps.png)
