@@ -147,8 +147,7 @@ xdescribe('CON API KEY VALIDA', () => {
             const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
             const esperado = true
             const sender = await crearEmailSender(config)
-            //have to change timeout in mocha script package.json
-            const respuesta1 = await sender.sendEmail(example.from, example.to, example.subject, example.html, arrayConPathDeArchivos)
+            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, textOrHtml: example.html, arrayConPathDeArchivos })
             assert.deepStrictEqual(respuesta1, esperado)
         })
     })

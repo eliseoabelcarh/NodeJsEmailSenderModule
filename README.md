@@ -14,7 +14,7 @@
             }
             const emailSender = await crearEmailSender(config)
             const mail = {
-                from: config.user, // opción 2: from: emailSender.getEmailSender
+                from: config.user, // **revisar Nota abajo
                 to: 'alguien@gmail.com',
                 subject: 'Send from My Module!!',
                 text: 'hello Moto!',
@@ -23,7 +23,10 @@
             }
             const recibido = await emailSender.sendEmail(mail)
            console.log('enviado:' + recibido)
-  ```         
+  ```      
+#### Nota:  
+El campo "from" es opcional, si no se envía, toma por defecto el de las credenciales pasadas en "config" 
+
 #### IMPORTANTE:
            *** Para poder enviar emails debe configurar manualmente su cuenta de Gmail
            *** ingresando a su cuenta Gmail y ACTIVANDO la opción "Less Secure Apps"

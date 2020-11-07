@@ -37,18 +37,18 @@ describe('---- PARA SENDGRID', () => {
         //reemplace variables de entorno creando un archivo .env
         const config = {
             apiKey: process.env.SENDGRID_API_KEY,
+            user: process.env.SENDGRID_EMAIL,
             service: 'sendgrid'
         }
         const email = {
-            from: process.env.SENDGRID_EMAIL, // debe ser el mismo email registrado en sendgrid
-            to: 'eliseoabelcarh2@gmail.com',
-            subject: 'Hi!!',
+            to: 'eliseoabelcarh1@gmail.com',
+            subject: 'Hiiii!!',
             html: '<strong>Esto es un mensaje</strong>'
         }
         const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
         const esperado = true
         const sender = await crearEmailSender(config)
-        const respuesta1 = await sender.sendEmail(email.from, email.to, email.subject, email.html, arrayConPathDeArchivos)
+        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, textOrHtml: email.html, arrayConPathDeArchivos })
         assert.deepStrictEqual(respuesta1, esperado)
     })
 })
