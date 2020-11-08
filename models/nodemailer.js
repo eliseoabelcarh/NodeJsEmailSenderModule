@@ -50,7 +50,7 @@ function crearEmail({ from, to, subject, text, attachmentsPaths }) {
 
     const base = crearObjetoEmail({ from, to, subject, text })
 
-    if (attachmentsPaths.length) {
+    if (attachmentsPaths) {
         email.attachments = []
         for (let i = 0; i < attachmentsPaths.length; i++) {
             const rutaElemento = attachmentsPaths[i];
