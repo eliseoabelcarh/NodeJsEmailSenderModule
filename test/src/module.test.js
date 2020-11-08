@@ -45,6 +45,7 @@ describe('---- PARA SENDGRID', () => {
             subject: 'Hiiii!! desde Sendgrid',
             html: '<strong>Esto es un mensaje</strong>'
         }
+        //arrayConPathDeArchivos opcional
         const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
         const esperado = true
         const sender = await crearEmailSender(config)
