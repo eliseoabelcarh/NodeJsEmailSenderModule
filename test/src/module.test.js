@@ -20,7 +20,7 @@ describe('---- PARA NODEMAILER', () => {
                 to: 'eliseoabelcarh1@gmail.com',
                 subject: 'Hola Desde Acá Nodemailer',
                 text: 'helloooo moto!',
-                attachmentsPaths: ['./test/assets/ejemplo.pdf']
+                attachments: ['./test/assets/ejemplo.pdf']
             }
             const recibido = await emailSender.sendEmail(mail)
             const esperado = true
@@ -42,14 +42,14 @@ describe('---- PARA SENDGRID', () => {
         }
         const email = {
             to: 'eliseoabelcarh1@gmail.com',
-            subject: 'Hiiii!! desde Sendgrid',
+            subject: 'Holaaa!! desde Sendgrid',
             html: '<strong>Esto es un mensaje</strong>'
         }
         //arrayConPathDeArchivos opcional
         const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
         const esperado = true
         const sender = await crearEmailSender(config)
-        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, text: email.html, arrayConPathDeArchivos })
+        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, text: email.html, attachments: arrayConPathDeArchivos })
         assert.deepStrictEqual(respuesta1, esperado)
     })
 })

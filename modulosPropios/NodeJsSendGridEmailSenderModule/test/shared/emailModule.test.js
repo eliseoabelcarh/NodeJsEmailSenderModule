@@ -141,13 +141,13 @@ describe('CON API KEY VALIDA', () => {
     })
 
 
-    describe('envío de email con campos mínimos y archivo adjunto opcionales', () => {
+    describe.only('envío de email con campos mínimos y archivo adjunto opcionales', () => {
         it('se recibe mensaje de envío exitoso', async () => {
             const example = emailExample.validoTextoPlanoYHtmlYAttachmentVacio
             const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
             const esperado = true
             const sender = await crearEmailSender(config)
-            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, text: example.html, arrayConPathDeArchivos })
+            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, text: example.html, attachments: arrayConPathDeArchivos })
             assert.deepStrictEqual(respuesta1, esperado)
         })
     })

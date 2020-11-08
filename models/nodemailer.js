@@ -44,16 +44,16 @@ function crearFileObject(ruta) {
 
 
 
-function crearEmail({ from, to, subject, text, attachmentsPaths }) {
+function crearEmail({ from, to, subject, text, attachments }) {
 
     let email = {}
 
     const base = crearObjetoEmail({ from, to, subject, text })
 
-    if (attachmentsPaths) {
+    if (attachments) {
         email.attachments = []
-        for (let i = 0; i < attachmentsPaths.length; i++) {
-            const rutaElemento = attachmentsPaths[i];
+        for (let i = 0; i < attachments.length; i++) {
+            const rutaElemento = attachments[i];
             let fileObject = crearFileObject(rutaElemento)
             email.attachments.push(fileObject)
         }

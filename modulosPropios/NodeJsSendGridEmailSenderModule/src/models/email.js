@@ -117,16 +117,16 @@ function crearEmailConTextoPlanoYHtmlYAttachmentConFiles(objeto, arrayConPathDeA
 }
 
 
-function crearEmailConCamposOpcionales(from, to, subject, text, arrayConPathDeArchivos) {
+function crearEmailConCamposOpcionales(from, to, subject, text, attachments) {
 
     let email = {}
 
     const base = crearObjetoEmail(from, to, subject, text)
 
-    if (arrayConPathDeArchivos) {
+    if (attachments) {
         email.attachments = []
-        for (let i = 0; i < arrayConPathDeArchivos.length; i++) {
-            const rutaElemento = arrayConPathDeArchivos[i];
+        for (let i = 0; i < attachments.length; i++) {
+            const rutaElemento = attachments[i];
             let fileObject = generateFileObjectFromPath(rutaElemento)
             email.attachments.push(fileObject)
         }

@@ -16,8 +16,8 @@ const crearEmailSenderNodemailer = async (config) => {
     return {
         getEmailSender: config.user,
         //NO ES NECESARIO ENVIAR CAMPO FROM, usa el de las credenciales
-        sendEmail: async function ({ from = config.user, to, subject, text, attachmentsPaths }) {
-            const email = crearEmail({ from, to, subject, text, attachmentsPaths })
+        sendEmail: async function ({ from = config.user, to, subject, text, attachments }) {
+            const email = crearEmail({ from, to, subject, text, attachments })
             await send(transporter, email)
             return true
         }

@@ -51,9 +51,9 @@ const crearEmailSender = async function (config) {
             }
 
         },
-        sendEmail: async ({ from = config.user, to, subject, text, arrayConPathDeArchivos }) => {
+        sendEmail: async ({ from = config.user, to, subject, text, attachments }) => {
             try {
-                const emailValido = crearEmailConCamposOpcionales(from, to, subject, text, arrayConPathDeArchivos)
+                const emailValido = crearEmailConCamposOpcionales(from, to, subject, text, attachments)
                 respuestaExitosa = await enviarEmail(emailValido)
                 return respuestaExitosa
             } catch (error) {
