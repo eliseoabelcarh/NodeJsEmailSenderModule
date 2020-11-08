@@ -8,24 +8,29 @@
 -axios
 
 ## SERVICIOS DISPONIBLES:
-### SENDGRID Y NODEMAILER
 
-### requisitos: APIKEY - registrándose en Sendgrid
-### email de remitente debe ser el mismo de la cuenta de Sendgrid
+### MODELO DE ENVIO PARA SENDGRID
+```
+         //reemplace variables de entorno creando un archivo .env
+        //Apikey se obtiene registrándose en la página de Sendgrid/Twilio
 
+        const config = {
+            apiKey: process.env.SENDGRID_API_KEY,
+            service: 'sendgrid' 
+        }
+        const email = {
+            from: 'eliseoabelcarh3@gmail.com', // debe ser el mismo email registrado en sendgrid
+            to: 'eliseoabelcarh1@gmail.com',
+            subject: 'Hi!!',
+            html: '<strong>Esto es un mensaje</strong>'
+        }
+        const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
+        const esperado = true
+        const sender = await crearEmailSender(config)
 
-#### ejemplo de objeto config:
-
-`const config = { apiKey: 'SG.SENDGRID_API_KEY' }`
-
-#### ejemplo de objeto email válido:
-
-
-#### ejemplo de objeto con attachments:
-
-`const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']`
-
-#### ejemplo de enviar email: 
-
-`const sender = await crearEmailSender(config)
-const respuesta1 = await sender.sendEmail(from, to, subject, html,arrayConPathDeArchivos)`
+        const respuesta1 = await sender.sendEmail(email.from, email.to, email.subject, email.html, arrayConPathDeArchivos)
+        assert.deepStrictEqual(respuesta1, esperado)
+```
+#### IMPORTANTE:
+ 
+        *** ApiKey y el email (remitente), deben coincidir con la cuenta registrada en Sendgrid

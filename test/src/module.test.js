@@ -17,8 +17,8 @@ describe('---- PARA NODEMAILER', () => {
             const emailSender = await crearEmailSender(config)
             const mail = {
                 from: config.user,
-                to: 'eliseoabelcarh3@gmail.com',
-                subject: 'Hola Desde Acá',
+                to: 'eliseoabelcarh1@gmail.com',
+                subject: 'Hola Desde Acá Nodemailer',
                 text: 'helloooo moto!',
                 attachmentsPaths: ['./test/assets/ejemplo.pdf']
             }
@@ -42,7 +42,7 @@ describe('---- PARA SENDGRID', () => {
         }
         const email = {
             to: 'eliseoabelcarh1@gmail.com',
-            subject: 'Hiiii!!',
+            subject: 'Hiiii!! desde Sendgrid',
             html: '<strong>Esto es un mensaje</strong>'
         }
         const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
