@@ -1,5 +1,5 @@
 
-const { crearSender } = require('../modulosPropios/emailSenderSendgrid')
+const { crearSender } = require('../modulosPropios/NodeJsSendGridEmailSenderModule')
 
 
 const crearEmailSenderSendgrid = async (config) => {

@@ -48,7 +48,7 @@ describe('---- PARA SENDGRID', () => {
         const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
         const esperado = true
         const sender = await crearEmailSender(config)
-        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, textOrHtml: email.html, arrayConPathDeArchivos })
+        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, text: email.html, arrayConPathDeArchivos })
         assert.deepStrictEqual(respuesta1, esperado)
     })
 })

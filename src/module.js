@@ -1,6 +1,6 @@
 
-const nodemailer = require('nodemailer');
-const fs = require('fs')
+
+
 const { crearEmailSenderNodemailer } = require('../src/nodemailer')
 const { crearEmailSenderSendgrid } = require('../src/sendgrid')
 
