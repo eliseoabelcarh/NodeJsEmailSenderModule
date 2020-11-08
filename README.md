@@ -18,8 +18,7 @@
                 to: 'alguien@gmail.com',
                 subject: 'Send from My Module!!',
                 text: 'hello Moto!',
-                attachmentsPaths: ['./test/assets/ejemplo.pdf']
-                //Si no enviarás adjuntos, debes enviar array vacío
+                attachmentsPaths: ['./test/assets/ejemplo.pdf'] //campo opcional
             }
             const recibido = await emailSender.sendEmail(mail)
            console.log('enviado:' + recibido)
@@ -50,12 +49,13 @@ El campo "from" es opcional, si no se envía, toma por defecto el de las credenc
         const email = {
             to: 'someone@gmail.com',
             subject: 'Hi!!',
-            html: '<strong>Esto es un mensaje</strong>'
+            text: '<strong>Esto es un mensaje</strong>',
+            arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf'] //campo opcional
         }
-        const arrayConPathDeArchivos = ['./test/assets/ejemplo.pdf']
+
         const esperado = true
         const sender = await crearEmailSender(config)
-        const respuesta1 = await sender.sendEmail({ to: email.to, subject: email.subject, text: email.html, arrayConPathDeArchivos })
+        const respuesta1 = await sender.sendEmail(email)
         assert.deepStrictEqual(respuesta1, esperado)
 ```
 #### IMPORTANTE:
